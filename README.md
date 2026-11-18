@@ -7,9 +7,9 @@ Built for the DataTalks.Club Machine Learning Zoomcamp midterm. The model is ser
 with FastAPI behind a small JSON API, and everything here can be reproduced from a
 clean clone.
 
-**Live demo:** <https://secom-yield-risk.onrender.com> — open `/docs` there for the
-interactive API. The free instance sleeps when idle, so the first request may take
-30–60 seconds.
+**Live demo:** <https://secom-yield-risk.onrender.com> — interactive API
+documentation at <https://secom-yield-risk.onrender.com/docs>. The free instance
+sleeps when idle, so the first request may take 30–60 seconds.
 
 > **Scope.** This predicts the recorded *product test result* for a historical
 > dataset. It does not predict equipment breakdowns, does not explain why a failure
@@ -254,7 +254,11 @@ context.
 | `GET` | `/` | Landing payload pointing at the other routes |
 | `GET` | `/health` | Service status, model name, expected feature count |
 | `POST` | `/predict` | Risk score per row of measurements |
-| `GET` | `/docs` | Interactive OpenAPI documentation |
+| `GET` | [`/docs`](https://secom-yield-risk.onrender.com/docs) | Interactive OpenAPI documentation (live) |
+
+The live `/docs` page is the quickest way to see the contract: expand `POST /predict`,
+choose *Try it out*, and send a body. The request body needs a full row of 590 numbers,
+so paste a row rather than typing one.
 
 A request is a list of rows. Each row must contain **exactly 590 measurements in the
 original column order**, with `null` for a missing reading. Nothing should be imputed
