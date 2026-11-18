@@ -1,0 +1,12 @@
+# Deployment blueprint: a single free-tier Docker web service.
+# The image is built from the repository's Dockerfile, and the platform sets PORT,
+# which the container command reads. The health check path must match the FastAPI
+# route, or the platform will consider the service unhealthy.
+services:
+  - type: web
+    name: secom-yield-risk
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true

@@ -1,0 +1,10 @@
+# Runtime dependencies for the inference service (src/app.py).
+# These versions match provenance.libraries stored in the saved model artifact,
+# so a rebuild loads the artifact exactly as it was fitted.
+fastapi==0.162.6
+uvicorn==0.54.0
+pandas==3.1.1
+numpy==2.5.4
+scikit-learn==1.9.1
+joblib==1.6.0
+pydantic==2.14.3

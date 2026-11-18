@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Raw data: 54 MB, downloaded from UCI instead of committed. See data/README.md.
+# The directory keeps its README so a fresh clone still explains where to get the files.
+data/*
+!data/README.md
+
+# Model artifacts: the notebook writes new ones here. The single artifact this
+# repository ships is committed on purpose, so the service runs from a fresh clone
+# without re-running training. Any other artifact stays local.
+models/*
+!models/secom_logistic_regression_pipeline.joblib
+
+# Local environment and secrets
+.env
+
+# Agent working notes, not part of the project deliverable
+AGENTS.md

@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+# pytest inserts the directory of each test file on sys.path, which would hide the
+# repository root. Adding "." here keeps `from src.app import app` importable no
+# matter which directory pytest is started from.
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
