@@ -7,6 +7,10 @@ Built for the DataTalks.Club Machine Learning Zoomcamp midterm. The model is ser
 with FastAPI behind a small JSON API, and everything here can be reproduced from a
 clean clone.
 
+**Live demo:** <https://secom-yield-risk.onrender.com> — open `/docs` there for the
+interactive API. The free instance sleeps when idle, so the first request may take
+30–60 seconds.
+
 > **Scope.** This predicts the recorded *product test result* for a historical
 > dataset. It does not predict equipment breakdowns, does not explain why a failure
 > happened, and is not a production decision system. The score is an uncalibrated
@@ -287,9 +291,18 @@ A row of all `null`s is accepted and scored, because the pipeline imputes median
 
 ## Deploying
 
-> **Hosted demo:** not deployed yet. The deployment configuration is in place
-> (`Dockerfile`, `render.yaml`); the live URL and the deployed commit hash will be
-> recorded here once the service is running.
+> **Hosted demo:** <https://secom-yield-risk.onrender.com>
+>
+> Deployed from commit `c55084d` on Render's free tier (Docker runtime, health check
+> `/health`). `GET /`, `GET /health`, `GET /docs` and `POST /predict` are open and
+> unauthenticated. The free instances sleep after roughly 15 minutes idle, so the
+> first request after a quiet period can take 30–60 seconds; later requests answer in
+> well under a second.
+>
+> The deployed service was checked against the committed artifact: for the first
+> three rows of `secom.data` it returns the same scores to floating-point precision
+> (two bit-identical, one differing in the last digit through BLAS summation order),
+> and the same validation errors.
 
 `render.yaml` describes a free-tier Docker web service with a health check on
 `/health`. On a platform that builds from the repository, the steps are: connect the
